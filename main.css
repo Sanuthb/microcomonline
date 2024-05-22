@@ -235,3 +235,15 @@ header .hero div{
     list-style: disc;
     line-height: 2rem;
 }
+
+/* footer */
+
+footer .footer{
+    padding: 2rem;
+    width: 100vw;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

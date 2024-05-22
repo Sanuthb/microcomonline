@@ -13,6 +13,11 @@
 
 <body>
     <header>
+        <div class="circle circle1" data-speed="1"></div>
+        <div class="circle circle2" data-speed="1"></div>
+        <div class="circle circle3" data-speed="1"></div>
+        <div class="circle circle4" data-speed="1"></div>
+        <div class="circle circle5" data-speed="1"></div>
         <nav class="navbar">
             <div class="logo"><img src="imgs/logo.jpeg" alt="logo"></div>
             <ul class="navlist">
@@ -73,6 +78,11 @@
     <!-- Services section -->
 
     <section id="services" class="services">
+        <div class="circles circles1" data-speed="1"></div>
+        <div class="circles circles2" data-speed="1"></div>
+        <div class="circles circles3" data-speed="1"></div>
+        <div class="circles circles4" data-speed="1"></div>
+        <div class="circles circles5" data-speed="1"></div>
         <div class="service_container1">
             <h2>Our Services</h2>
         </div>
@@ -178,33 +188,110 @@
     <!-- Success Stories -->
 
     <section class="testimonial" id="testimonial">
-
+        <div class="testimonial_container1">
+            <h2>See How Microcom Helped Businesses Like Yours
+                Succeed.</h2>
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide"><img src="imgs/1.png" alt="Slide 1"></div>
+                <div class="slide"><img src="imgs/2.png" alt="Slide 1"></div>
+                <div class="slide"><img src="imgs/3.png" alt="Slide 1"></div>
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
     </section>
+
+    <!-- call to action -->
+    <section class="action">
+        <div class="action_container1">
+            <p>Stop wasting time on multiple marketing tools. Microcom brings
+                everything together under one roof. Try our platform for free and
+                experience the difference</p>
+            <div class="action_container2">
+                <button>Book Now</button>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Contact section -->
     <section class="contact" id="contact">
-
+        
     </section>
 
     <!-- footer section -->
     <footer class="footer">
-        <div class="logo">
-            <img src="imgs/logo.jpeg" alt="">
+        <div>
+            <div class="logo">
+                <img src="imgs/logo.jpeg" alt="">
+            </div>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Blog</li>
+                <li>Contact</li>
+            </ul>
+            <div class="social_links">
+                <i class="fa-brands fa-square-instagram"></i>
+                <i class="fa-brands fa-square-facebook"></i>
+                <i class="fa-brands fa-square-x-twitter"></i>
+            </div>
         </div>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>Blog</li>
-            <li>Contact</li>
-        </ul>
-        <div class="social_links">
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-x-twitter"></i>
-        </div>
+        <div class="copyrights">All Rights Reserved © Microcomonline.com</div>
     </footer>
 
 </body>
+
+<script>
+    let slideIndex = 0;
+    let timer;
+
+    function showSlides() {
+        const slides = document.querySelectorAll('.slide');
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        } else if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+        slides[slideIndex].style.display = 'block';
+        slideIndex++;
+        timer = setTimeout(showSlides, 2000);
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        showSlides();
+        clearTimeout(timer);
+    }
+
+    function prevSlide() {
+        slideIndex--;
+        showSlides();
+        clearTimeout(timer);
+    }
+
+    document.addEventListener('DOMContentLoaded', showSlides);
+
+
+    const circles = document.querySelectorAll('.circle');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        circles.forEach(circle => {
+            const speed = parseInt(circle.getAttribute('data-speed'));
+            console.log(speed)
+            const yPos = -scrollY * speed;
+            circle.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+</script>
 
 </html>
